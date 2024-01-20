@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wedding Invitation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:wght@100;400;600;700&display=swap" rel="stylesheet">
+    <!-- Simply Countdown -->
+    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css"/>
+    <script src="countdown/simplyCountdown.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <section id="hero" class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
+        <main>
+            <h4>Kepada Bapak/Ibu/Saudara/i,</h4>
+            <h1>Winter Adriano Gabe Y. Simarmata</h1>
+            <p>Akan berulang tahun yang ke-<span class="myage">21</span> dalam:</p>
+            <div class="simply-countdown"></div>
+            <a href="#ucapan" class="btn btn-lg mt-4">Beri Ucapan</a>
+        </main>
+    </section>
+
+    <section id="ucapan" class="container ucapan w-100 p-3 mx-auto text-center">
+      <h1>Ucapan</h1>
+      <div class="row justify-content-center">
+        <div class=" col-10 col-md-9 col-lg-6 kartu">
+          <form class="text-white" name="form-ucapan">
+            <div class="mb-3 mt-4 text-start">
+              <label for="nama" class="form-label">Nama</label>
+              <input type="nama" name="nama" class="form-control" id="nama" placeholder="Namamu">
+            </div>
+            <div class="mb-3 text-start">
+              <label for="ucapan" class="form-label">Ucapan</label>
+              <textarea name="ucapan" class="form-control" id="ucapan" rows="8"></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg mb-4 w-100 btn-kirim">Submit</button>
+            <div class="btn-loading d-none">
+              <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden ">Loading...</span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="kartu-svg d-none row justify-content-center">
+          <div class="col-10 col-md-9 col-lg-6">
+            <svg fill="#000" height="300px" width="300px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="pink">
+
+              <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+              
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+              
+              <g id="SVGRepo_iconCarrier"> <g> <g> <path d="M496.327,127.091l-15.673,9.613L281.83,258.623c-7.983,4.859-16.917,7.293-25.84,7.293s-17.826-2.424-25.778-7.262 l-0.136-0.084L31.347,134.771l-15.673-9.759L0,115.242v302.717h512V117.488L496.327,127.091z"/> </g> </g> <g> <g> <path d="M25.245,94.041l25.161,15.673l25.161,15.673l171.008,106.527c5.841,3.521,13.082,3.511,18.913-0.042l173.652-106.486 l25.558-15.673l25.558-15.673H25.245z"/> </g> </g> </g>
+              
+              </svg>
+          </div>
+        </div>
+        <h1 class="respon-ucapan d-none">Terima Kasih Atas Ucapannya!</h1>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="lightbox/fslightbox.js"></script>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzqXhwBNjsOwYzMnwg0H4BT6IWwlzqWSdHAvLTTpOb2pebtTzDhoisNsK3KFLJ_BDIl/exec'
+      const form = document.forms['form-ucapan'];
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert = document.querySelector('.respon-ucapan');
+      const formUcapan = document.querySelector('.kartu');
+      const kartuUcapan = document.querySelector('.kartu-svg');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        // submit onclick
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            formUcapan.classList.toggle('d-none');
+            kartuUcapan.classList.toggle('d-none');
+            kartuUcapan.style.animation = 'atas 4s 2';
+            myAlert.classList.toggle('d-none');
+            kartuUcapan.style.animation = 'atas 4s 2';
+
+            console.log('Success!', response);
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+    <script>
+        simplyCountdown('.simply-countdown', {
+            year: 2024, // required
+            month: 1, // required
+            day: 23, // required
+            hours: 0, // Default is 0 [0-23] integer
+            minutes: 0, // Default is 0 [0-59] integer
+            seconds: 0, // Default is 0 [0-59] integer
+            words: { //words displayed into the countdown
+                days: { singular: 'hari', plural: 'hari' },
+                hours: { singular: 'jam', plural: 'jam' },
+                minutes: { singular: 'menit', plural: 'menit' },
+                seconds: { singular: 'detik', plural: 'detik' }
+            },
+        });
+    </script>
+    
+  </body>
+</html>
