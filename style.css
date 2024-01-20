@@ -47,8 +47,8 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Sacramento', cursive;
-    font-size: 5rem;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 4rem;
 }
 
 .hero h4 {
@@ -118,6 +118,9 @@ body {
     .simply-countdown > .simply-section {
         padding: 70px;
     }
+    .hero h1 {
+        font-size: 3.5rem;
+    }
     .ucapan .respon-ucapan {
         font-size: 4.5rem;
     }
@@ -135,6 +138,9 @@ body {
     .mynavbar .nav-link {
         font-size: 2rem;
         text-align: center;
+    }
+    .hero h1 {
+        font-size: 3.0rem;
     }
     .ucapan .respon-ucapan {
         font-size: 4rem;
@@ -159,7 +165,7 @@ body {
         font-size: 3rem;
     }
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.0rem;
     }
     .ucapan .form-control {
         font-size: 1.7rem;
