@@ -97,17 +97,13 @@ body {
     animation: atas 2s;
 }
 
-.kartu {
-    position: relative;
-}
-
 .ucapan .form-control {
     font-size: 1.5rem;
 }
 
 @keyframes atas {
     from {top: 50px;}
-    to {top:0px;}
+    to {top: 0px;}
 }
 /* Media Query */
 /* laptop */
